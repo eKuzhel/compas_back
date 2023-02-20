@@ -80,6 +80,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && mv /usr/bin/composer.phar /usr/bin/composer
 
+RUN composer install
 
 CMD ["php-fpm7", "-F", "-c", "/etc/php7/php.ini"]
 

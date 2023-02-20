@@ -19,11 +19,6 @@ final class AdminMenuTablesSeeder extends Seeder
      */
     public function run(): void
     {
-        /** @var \Encore\Admin\Auth\Database\Role $role */
-        $role = Role::query()->where('slug', '=', 'administrator')->first();
 
-        /** @var \Encore\Admin\Auth\Database\Menu $menu */
-        $menu = Menu::query()->first();
-        $menu->roles()->save($role);
     }
 }

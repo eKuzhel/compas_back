@@ -5,10 +5,8 @@ services:
   php74:
     image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     container_name: compas_php74
-    build:
-      context: ./docker/php74
     volumes:
-      - backend-data-compas:/app/static/uploads
+      - backend-data-compas:/app/storage
     ports:
       - 9000:9000
     networks:

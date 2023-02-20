@@ -1,12 +1,14 @@
 FROM alpine:3.13
 
+WORKDIR /app
+
 ENV TIMEZONE="Europe/Moscow"
 
 RUN rm -rf /etc/localtime \
     && ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
     && echo "${TIMEZONE}" > /etc/timezone
 
-RUN adduser -D -u 1000 -g 'www' www && mkdir -p /app 
+RUN adduser -D -u 1000 -g 'www' www && mkdir -p /app
 
 RUN apk update \
     && apk add \
@@ -67,15 +69,15 @@ RUN sed -i "s|;listen.owner\s*=\s*nobody|listen.owner = www|g" /etc/php7/php-fpm
 RUN touch /var/log/php7/warning.log && chown www:www /var/log/php7/warning.log && ln -sf /dev/stderr /var/log/php7/warning.log
 RUN touch /var/log/php7/error.log && chown www:www /var/log/php7/error.log && ln -sf /dev/stdout /var/log/php7/error.log
 
-COPY config/php.ini /etc/php7/php.ini
-COPY config/www.conf /etc/php7/php-fpm.d/www.conf 
+COPY docker/php74/config/php.ini /etc/php7/php.ini
+COPY docker/php74/config/www.conf /etc/php7/php-fpm.d/www.conf
 COPY .env.example .env
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/bin \
     && php -r "unlink('composer-setup.php');" \
     && mv /usr/bin/composer.phar /usr/bin/composer
-	
+
 
 CMD ["php-fpm7", "-F", "-c", "/etc/php7/php.ini"]
 

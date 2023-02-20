@@ -2,7 +2,7 @@ version: "2.1"
 
 services:
 
-  php74:
+  compas_php74:
     image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     container_name: compas_php74
     volumes:
@@ -30,6 +30,14 @@ services:
     networks:
       default:
         ipv4_address: 172.16.80.20
+  nginx:
+    container_name: compas_nginx
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    networks:
+      default:
+        ipv4_address: 172.16.80.30
 
 networks:
   default:

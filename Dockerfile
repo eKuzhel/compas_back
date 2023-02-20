@@ -81,6 +81,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && mv /usr/bin/composer.phar /usr/bin/composer
 
 RUN composer install
+RUN chmod -R 664 /app/storage/logs
 
 CMD ["php-fpm7", "-F", "-c", "/etc/php7/php.ini"]
 

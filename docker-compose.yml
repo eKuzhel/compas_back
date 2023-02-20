@@ -1,0 +1,47 @@
+version: "2.1"
+
+services:
+
+  php74:
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    container_name: compas_php74
+    build:
+      context: ./docker/php74
+    volumes:
+      - backend-data-compas:/app/static/uploads
+    ports:
+      - 9000:9000
+    networks:
+      default:
+      ipv4_address: 172.16.80.10
+
+  postgres:
+    image: postgres:14.5
+    container_name: compas_postgres
+    restart: unless-stopped
+    command: postgres -c max_connections=400 -c shared_buffers=5GB -c max_parallel_workers_per_gather=2
+    environment:
+      POSTGRES_DB: 'compas'
+      POSTGRES_USER: 'compas'
+      POSTGRES_PASSWORD: 'jRIohPmUGQtFIXDko2er'
+    volumes:
+      - postgres-data-compas:/var/lib/postgresql/data
+    networks:
+      default:
+        ipv4_address: 172.16.80.20
+
+networks:
+  default:
+    driver: bridge
+    name: compas
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+      com.docker.network.bridge.name: "compas"
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.80.0/24
+
+volumes:
+  postgres-data-compas:
+  backend-data-compas:

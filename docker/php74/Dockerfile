@@ -69,6 +69,7 @@ RUN touch /var/log/php7/error.log && chown www:www /var/log/php7/error.log && ln
 
 COPY config/php.ini /etc/php7/php.ini
 COPY config/www.conf /etc/php7/php-fpm.d/www.conf 
+COPY .env.example .env
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/bin \

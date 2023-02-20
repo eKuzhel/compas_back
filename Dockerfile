@@ -71,7 +71,9 @@ RUN touch /var/log/php7/error.log && chown www:www /var/log/php7/error.log && ln
 
 COPY docker/php74/config/php.ini /etc/php7/php.ini
 COPY docker/php74/config/www.conf /etc/php7/php-fpm.d/www.conf
-COPY .env.example .env
+
+COPY ./ /app
+COPY ./.env.example /app/.env
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/bin \

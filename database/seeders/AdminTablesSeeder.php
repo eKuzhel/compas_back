@@ -100,9 +100,6 @@ final class AdminTablesSeeder extends Seeder
         $role = Role::query()->where('slug', '=', 'administrator')->first();
         $role->permissions()->save(Permission::query()->where('slug', '=', '*')->first());
 
-        /** @var \Encore\Admin\Auth\Database\Menu $menu */
-        $menu = Menu::query()->where('title', '=', 'Admin')->first();
-        $menu->roles()->save($role);
     }
 
     /**

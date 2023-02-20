@@ -7,8 +7,6 @@ services:
     container_name: compas_php74
     volumes:
       - backend-data-compas:/app/storage
-    ports:
-      - 9000:9000
     networks:
       default:
         ipv4_address: 172.16.80.10

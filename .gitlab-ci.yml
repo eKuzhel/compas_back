@@ -15,5 +15,5 @@ deploy_dev:
     - dev
   script:
     - docker-compose -f docker-compose.yml up -d
-    - docker-compose -f docker-compose.yml exec -T php artisan migrate
+    - docker-compose -f docker-compose.yml exec -T php74 php artisan migrate
 

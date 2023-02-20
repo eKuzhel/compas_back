@@ -2,7 +2,7 @@ version: "2.1"
 
 services:
 
-  compas_php74:
+  php74:
     image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     container_name: compas_php74
     volumes:

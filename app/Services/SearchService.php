@@ -42,6 +42,7 @@ class SearchService
         }
         $res = $hospital->getAttributes();
         $res['doctors'] = $hospital->doctors;
+        $res['diseases'] = $hospital->diseases;
         return $res;
     }
 }

@@ -29,4 +29,20 @@ class AllTest extends TestCase
         $response->assertStatus(200);
         Log::info($response->json());
     }
+
+    public function testSearchHas()
+    {
+        $response = $this->get('/api/search?region_id=1&has_rlo=1&type=1&disease=' . DiseaseType::crown());
+
+        $response->assertStatus(200);
+        Log::info($response->json());
+    }
+
+    public function testOne()
+    {
+        $response = $this->get('/api/hospital/1');
+
+        $response->assertStatus(200);
+        Log::info($response->json());
+    }
 }

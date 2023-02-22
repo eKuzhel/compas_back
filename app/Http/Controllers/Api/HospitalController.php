@@ -12,4 +12,8 @@ class HospitalController extends Controller
     {
         return $service->search($searchRequest);
     }
+    public function one(int $id, SearchService $service): array
+    {
+        return $service->one($id);
+    }
 }

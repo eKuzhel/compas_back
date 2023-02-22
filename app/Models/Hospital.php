@@ -15,6 +15,12 @@ class Hospital extends Model
         return $this->hasOne(Region::class, 'id', 'region_id');
     }
 
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class, 'hospital_id', 'id');
+    }
+
+
     /**
      * @return string[]
      */

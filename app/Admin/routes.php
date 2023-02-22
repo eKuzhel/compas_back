@@ -21,7 +21,7 @@ Route::group(\array_merge($defaultGroupAttributes, [
 ]), function (Router $router) {
 
     $router->get('/', [HomeController::class, 'index'])->name('home');
-    $router->resource('region', RegionController::class);
+    $router->resource('regions', RegionController::class);
     $router->resource('hospital', HospitalController::class);
     $router->resource('doctor', DoctorController::class);
 });

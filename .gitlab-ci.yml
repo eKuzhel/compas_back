@@ -14,7 +14,7 @@ deploy_dev:
   only:
     - dev
   script:
-    - docker-compose -f docker-compose.yml up -d
+    - docker-compose -f docker-compose.yml up -d --build
     - docker-compose -f docker-compose.yml exec -T php74 php artisan migrate
     - docker-compose -f docker-compose.yml exec -T php74 php artisan db:seed --class=MenuSeeder
 

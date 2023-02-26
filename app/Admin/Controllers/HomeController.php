@@ -23,6 +23,6 @@ final class HomeController extends Controller
     {
 
 
-        return \redirect(\admin_url('region'));
+        return \redirect(\admin_url('regions'));
     }
 }

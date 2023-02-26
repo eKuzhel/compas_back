@@ -35,6 +35,8 @@ services:
     build:
       context: .
       dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - backend-data-compas:/app/storage
     networks:
       default:
         ipv4_address: 172.16.80.30

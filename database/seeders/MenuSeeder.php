@@ -31,6 +31,20 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-medkit',
             'uri' => 'doctor',
         ],
+        [
+
+            'order' => 4,
+            'title' => 'Файлы',
+            'icon' => 'fa-file-pdf-o',
+            'uri' => 'file',
+        ],
+        [
+
+            'order' => 5,
+            'title' => 'Старницы',
+            'icon' => 'fa-id-card-o',
+            'uri' => 'page',
+        ],
 
     ];
 

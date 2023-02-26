@@ -1,8 +1,10 @@
 <?php
 
 use App\Admin\Controllers\DoctorController;
+use App\Admin\Controllers\FileController;
 use App\Admin\Controllers\HomeController;
 use App\Admin\Controllers\HospitalController;
+use App\Admin\Controllers\PageFileController;
 use App\Admin\Controllers\RegionController;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
@@ -24,4 +26,6 @@ Route::group(\array_merge($defaultGroupAttributes, [
     $router->resource('regions', RegionController::class);
     $router->resource('hospital', HospitalController::class);
     $router->resource('doctor', DoctorController::class);
+    $router->resource('file', FileController::class);
+    $router->resource('page', PageFileController::class);
 });

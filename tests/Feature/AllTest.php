@@ -45,4 +45,11 @@ class AllTest extends TestCase
         $response->assertStatus(200);
         Log::info($response->json());
     }
+    public function testOnePage()
+    {
+        $response = $this->get('/api/page/1');
+
+        $response->assertStatus(200);
+        Log::info($response->json());
+    }
 }

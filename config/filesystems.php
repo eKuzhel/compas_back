@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => \env('FILESYSTEM_DRIVER', 's3'),
+    'default' => \env('FILESYSTEM_DRIVER', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +33,12 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => \storage_path('app'),
+        ],
+        'admin' => [
+            'driver' => 'local',
+            'root' => \storage_path('app/public'),
+            'url' => \env('APP_URL') . '/storage',
+            'visibility' => 'public',
         ],
 
         'public' => [

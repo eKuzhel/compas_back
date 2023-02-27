@@ -54,9 +54,9 @@ class HospitalController extends AdminController
         $form = new Form(new Hospital);
         $form->text('name', 'Название')->rules(['required', 'string', 'max:255']);
         $form->text('address', 'Адрес')->rules(['required', 'string', 'max:255']);
-        $form->text('phone', 'Телефон')->rules(['required', 'string', 'max:255']);
-        $form->text('url', 'Внешняя ссылка')->rules(['required', 'string', 'max:255']);
-        $form->select('region_id', 'Регион')->options(Region::getOptionList());
+        $form->text('phone', 'Телефон')->rules(['nullable', 'string', 'max:255']);
+        $form->text('url', 'Внешняя ссылка')->rules(['nullable', 'string', 'max:255']);
+        $form->select('region_id', 'Регион')->options(Region::getOptionList())->rules(['required']);
         $form->radioButton('has_adult', 'Взрослая')->options($radioList);
         $form->radioButton('has_child', 'Десткая')->options($radioList);
 
@@ -65,7 +65,7 @@ class HospitalController extends AdminController
         $form->radioButton('has_vmp', 'ВМП')->options($radioList);
         $form->radioButton('has_vzn', 'ВЗН')->options($radioList);
         $form->radioButton('has_kd', 'КД')->options($radioList);
-        $form->multipleSelect('diseases', 'Заболевания')->options(DiseaseType::toArray());
+        $form->multipleSelect('diseases', 'Заболевания')->options(DiseaseType::toArray())->rules(['required']);
 
         $form->footer(function ($footer) {
             $footer->disableReset();

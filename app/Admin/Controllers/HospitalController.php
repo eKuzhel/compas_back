@@ -67,6 +67,11 @@ class HospitalController extends AdminController
         $form->radioButton('has_kd', 'КД')->options($radioList);
         $form->multipleSelect('diseases', 'Заболевания')->options(DiseaseType::toArray())->rules(['required']);
 
+        $form->hasMany('doctors', function (Form\NestedForm $form) {
+            $form->text('fio', 'ФИО');
+            $form->text('job_title', 'Должность');
+        });
+
         $form->footer(function ($footer) {
             $footer->disableReset();
             $footer->disableViewCheck();
